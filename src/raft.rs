@@ -2356,7 +2356,7 @@ impl<T: Storage> Raft<T> {
             changer.simple(&cc.changes)?
         };
         self.prs
-            .apply_conf(cfg, changes, self.raft_log.last_index());
+            .apply_conf(cfg, changes, self.raft_log.last_index() + 1);
         Ok(self.post_conf_change())
     }
 
